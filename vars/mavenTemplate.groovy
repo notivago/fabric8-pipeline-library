@@ -28,7 +28,7 @@ def call(Map parameters = [:], body) {
          -Xms512m -Xmx512m']],
                          resourceLimitMemory: '768Mi']],
                 volumes: [secretVolume(secretName: 'jenkins-maven-settings', mountPath: '/root/.m2'),
-                          persistentVolumeClaim(claimName: 'jenkins-mvn-local-repo', mountPath: '/root/.mvnrepository'),
+                          hostPathVolume(hostPath: '/home/core/.mvnrepository', mountPath: '/root/.mvnrepository'),
                           secretVolume(secretName: 'jenkins-release-gpg', mountPath: '/home/jenkins/.gnupg'),
                           secretVolume(secretName: 'jenkins-hub-api-token', mountPath: '/home/jenkins/.apitoken'),
                           secretVolume(secretName: 'jenkins-ssh-config', mountPath: '/root/.ssh'),
@@ -47,7 +47,7 @@ def call(Map parameters = [:], body) {
                          envVars: [
                                  [key: 'MAVEN_OPTS', value: '-Duser.home=/root/']]]],
                 volumes: [secretVolume(secretName: 'jenkins-maven-settings', mountPath: '/root/.m2'),
-                          persistentVolumeClaim(claimName: 'jenkins-mvn-local-repo', mountPath: '/root/.mvnrepository'),
+                          hostPathVolume(hostPath: '/home/core/.mvnrepository', mountPath: '/root/.mvnrepository'),
                           secretVolume(secretName: 'jenkins-docker-cfg', mountPath: '/home/jenkins/.docker'),
                           secretVolume(secretName: 'jenkins-release-gpg', mountPath: '/home/jenkins/.gnupg'),
                           secretVolume(secretName: 'jenkins-hub-api-token', mountPath: '/home/jenkins/.apitoken'),
