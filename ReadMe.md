@@ -42,6 +42,14 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+# Important
+
+This library is an extension of the original one to modify the mavenNode / mavenTemplate to use a hostPathVolume instead 
+of a persistentVolumeClaim for jenkins.  
+
+On top of it the mavenNode use an extension of the [fabric8/maven-builder](https://hub.docker.com/r/fabric8/maven-builder): 
+[evohub/maven-builder](https://hub.docker.com/r/evohub/maven-builder).
+
 # Fabric8 Pipeline Library
 
 This git repository contains a library of reusable [Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/) steps and functions that can be used in your `Jenkinsfile` to help improve your Continuous Delivery pipeline.
